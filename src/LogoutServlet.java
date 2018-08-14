@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -17,19 +18,20 @@ public class LogoutServlet extends HttpServlet {
        
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setContentType("text/html");
-    	Cookie loginCookie = null;
     	Cookie[] cookies = request.getCookies();
     	if(cookies != null){
     	for(Cookie cookie : cookies){
-    		if(cookie.getName().equals("user")){
-    			loginCookie = cookie;
+    		if(cookie.getName().equals("JSESSIONID")){
+    			System.out.println("JSESSIONID="+cookie.getValue());
     			break;
     		}
     	}
     	}
-    	if(loginCookie != null){
-    		loginCookie.setMaxAge(0);
-        	response.addCookie(loginCookie);
+    	//invalidate the session if exists
+    	HttpSession session = request.getSession(false);
+    	System.out.println("User="+session.getAttribute("user"));
+    	if(session != null){
+    		session.invalidate();
     	}
     	response.sendRedirect("login.html");
     }
