@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <display-name>ServletFilterExample</display-name>
+  <display-name>Vuln Web App</display-name>
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
   </welcome-file-list>
-  
+  <context-param>
+    <param-name>DBUSER</param-name>
+    <param-value>andross</param-value>
+  </context-param>
+  <context-param>
+    <param-name>DBPWD</param-name>
+    <param-value>password</param-value>
+  </context-param>
+  <context-param>
+    <param-name>DBURL</param-name>
+    <param-value>jdbc:mysql://localhost/mysql_db</param-value>
+  </context-param>
+  <listener>
+    <listener-class>com.vuln.webapp.listener.AppContextListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.vuln.webapp.listener.AppContextAttributeListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.vuln.webapp.listener.SessionListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.vuln.webapp.listener.RequestListener</listener-class>
+  </listener>
   <filter>
     <filter-name>RequestLoggingFilter</filter-name>
     <filter-class>com.vuln.webapp.servlet.filters.RequestLoggingFilter</filter-class>
@@ -13,7 +36,6 @@
     <filter-name>AuthenticationFilter</filter-name>
     <filter-class>com.vuln.webapp.servlet.filters.AuthenticationFilter</filter-class>
   </filter>
-  
   <filter-mapping>
     <filter-name>RequestLoggingFilter</filter-name>
     <url-pattern>/*</url-pattern>
