@@ -1,27 +1,20 @@
 package com.vuln.webapp.db;
 
+
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DatabaseConnectionManager {
 
-	private String dbURL;
-	private String user;
-	private String password;
-	private Connection con;
+	private Connection connection;
 	
-	public DatabaseConnectionManager(String url, String u, String p){
-		this.dbURL=url;
-		this.user=u;
-		this.password=p;
-		//create db connection now
-		
+	public DatabaseConnectionManager(String dbURL, String user, String pwd) throws ClassNotFoundException, SQLException{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		this.connection = DriverManager.getConnection(dbURL, user, pwd);
 	}
 	
 	public Connection getConnection(){
-		return this.con;
-	}
-	
-	public void closeConnection(){
-		//close DB connection here
+		return this.connection;
 	}
 }

@@ -5,16 +5,24 @@
     <welcome-file>login.html</welcome-file>
   </welcome-file-list>
   <context-param>
-    <param-name>DBUSER</param-name>
+    <param-name>tempfile.dir</param-name>
+    <param-value>tmpfiles</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbUser</param-name>
     <param-value>andross</param-value>
   </context-param>
   <context-param>
-    <param-name>DBPWD</param-name>
-    <param-value>password</param-value>
+    <param-name>dbPassword</param-name>
+    <param-value>GR@55i5Green3r!</param-value>
   </context-param>
   <context-param>
-    <param-name>DBURL</param-name>
-    <param-value>jdbc:mysql://localhost/mysql_db</param-value>
+    <param-name>dbURL</param-name>
+    <param-value>jdbc:mysql://localhost:3306/UserDB</param-value>
+  </context-param>
+  <context-param>
+    <param-name>log4j-config</param-name>
+    <param-value>WEB-INF/log4j.xml</param-value>
   </context-param>
   <listener>
     <listener-class>com.vuln.webapp.listener.AppContextListener</listener-class>

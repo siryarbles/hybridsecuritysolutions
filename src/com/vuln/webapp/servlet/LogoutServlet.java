@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class LogoutServlet
- */
-@WebServlet("/LogoutServlet")
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.*;
+
+@WebServlet(name = "Logout", urlPatterns = { "/Logout" })
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static Logger logger = (Logger) LogManager.getLogger(LogoutServlet.class);
        
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setContentType("text/html");
@@ -23,14 +24,14 @@ public class LogoutServlet extends HttpServlet {
     	if(cookies != null){
     	for(Cookie cookie : cookies){
     		if(cookie.getName().equals("JSESSIONID")){
-    			System.out.println("JSESSIONID="+cookie.getValue());
+    			logger.info("JSESSIONID="+cookie.getValue());
     			break;
     		}
     	}
     	}
     	//invalidate the session if exists
     	HttpSession session = request.getSession(false);
-    	System.out.println("User="+session.getAttribute("user"));
+    	logger.info("User="+session.getAttribute("User"));
     	if(session != null){
     		session.invalidate();
     	}
