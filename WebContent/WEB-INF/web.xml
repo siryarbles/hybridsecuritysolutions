@@ -18,7 +18,7 @@
   </context-param>
   <context-param>
     <param-name>dbURL</param-name>
-    <param-value>jdbc:mysql://localhost:3306/UserDB</param-value>
+    <param-value>jdbc:mysql://localhost:3306/UserDB?useLegacyDatetimeCode=false&amp;serverTimezone=US/Eastern</param-value>
   </context-param>
   <context-param>
     <param-name>log4j-config</param-name>

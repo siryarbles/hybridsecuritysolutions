@@ -10,6 +10,7 @@ public class User implements Serializable{
 	private String email;
 	private int id;
 	private String country;
+	private String sessionId;
 	
 	public User(String nm, String em, String country, int i){
 		this.name=nm;
@@ -52,6 +53,14 @@ public class User implements Serializable{
 
 	public String getCountry() {
 		return country;
+	}
+	
+	public String getSessionId() {
+		return sessionId;
+	}
+	
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 	
 	@Override

@@ -14,7 +14,7 @@
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("user"))
+				if (cookie.getName().equals("JSESSIONID"))
 					userName = cookie.getValue();
 			}
 		}

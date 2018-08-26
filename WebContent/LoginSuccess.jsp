@@ -35,6 +35,8 @@
 	<a href="CheckoutPage.jsp">Checkout Page</a>
 	<br>
 	<a href="file.html">File Download and Upload</a>
+	<br>
+	<a href="blog.html">My Blog</a>
 	<form action="LogoutServlet" method="post">
 		<input type="submit" value="Logout">
 	</form>
